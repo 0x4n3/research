@@ -6,7 +6,25 @@
 
 # Detailed Analysis
 
-`WS2_32!ioctlsocket` called with the following arguments: 
+`WS2_32!bind` is called with the following arguments: 
+
+```cpp
+int bind(
+  [in] SOCKET         s,
+       const sockaddr *addr,
+  [in] int            namelen
+);
+```
+
+Where
+
+```
+s = 0x304
+*addr which points to 0x4c3f9f8 when dereferenced is 0x9b370002
+namelen = 0x10
+```
+
+`WS2_32!ioctlsocket` is called with the following arguments: 
 
 ```cpp
 int ioctlsocket(
