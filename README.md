@@ -6,6 +6,8 @@
 
 # Detailed Analysis
 
+## WS2_32!bind
+
 `WS2_32!bind` is called with the following arguments: 
 
 ```cpp
@@ -20,9 +22,18 @@ Where
 
 ```
 s = 0x304
-*addr which points to 0x4c3f9f8 when dereferenced is 0x9b370002
+*addr = 04c3f9f8
 namelen = 0x10
 ```
+
+Dereferencing `04c3f9f8` gives us the following: 
+
+```
+0:004> dq 04c3f9f8 L1
+04c3f9f8  00000000`9b370002
+```
+
+## WS2_32!ioctlsocket
 
 `WS2_32!ioctlsocket` is called with the following arguments: 
 
@@ -35,6 +46,8 @@ int ioctlsocket(
 ```
 
 Where `cmd` is `8004667Eh`
+
+## WS2_32!setsockopt
 
 Then, `WS2_32!setsockopt` is called: 
 
