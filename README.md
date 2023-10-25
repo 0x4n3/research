@@ -49,12 +49,10 @@ Where `cmd` is `8004667Eh`
 
 Further research suggests that this is defined as "FIONBIO" (Source: https://learn.microsoft.com/en-us/windows/win32/winsock/winsock-ioctls)
 
->>>
-FIONBIO
-Enable or disable non-blocking mode on socket s. The lpvInBuffer parameter points at an unsigned long (QoS), which is nonzero if non-blocking mode is to be enabled and zero if it is to be disabled. When a socket is created, it operates in blocking mode (that is, non-blocking mode is disabled). This is consistent with BSD sockets.
+> FIONBIO
+> Enable or disable non-blocking mode on socket s. The lpvInBuffer parameter points at an unsigned long (QoS), which is nonzero if non-blocking mode is to be enabled and zero if it is to be disabled. When a socket is created, it operates in blocking mode (that is, non-blocking mode is disabled). This is consistent with BSD sockets.
+> The WSAAsyncSelect or WSAEventSelect routine automatically sets a socket to non-blocking mode. If WSAAsyncSelect or WSAEventSelect has been issued on a socket, then any attempt to use WSAIoctl to set the socket back to blocking mode will fail with WSAEINVAL. To set the socket back to blocking mode, an application must first disable WSAAsyncSelect by calling WSAAsyncSelect with the lEvent parameter equal to zero, or disable WSAEventSelect by calling WSAEventSelect with the lNetworkEvents parameter equal to zero.
 
-The WSAAsyncSelect or WSAEventSelect routine automatically sets a socket to non-blocking mode. If WSAAsyncSelect or WSAEventSelect has been issued on a socket, then any attempt to use WSAIoctl to set the socket back to blocking mode will fail with WSAEINVAL. To set the socket back to blocking mode, an application must first disable WSAAsyncSelect by calling WSAAsyncSelect with the lEvent parameter equal to zero, or disable WSAEventSelect by calling WSAEventSelect with the lNetworkEvents parameter equal to zero.
->>>
 
 ## WS2_32!setsockopt
 
